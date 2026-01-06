@@ -1,0 +1,82 @@
+1️⃣ Medidas DAX
+Number of Customers
+Number of Customers =
+COUNT('Databel - Data'[Customer ID])
+
+Number of Unique Customers
+Number of Unique Customers =
+DISTINCTCOUNT('Databel - Data'[Customer ID])
+
+Number of Churned Customers
+Number of Churned Customers =
+SUM('Databel - Data'[Churned])
+
+Churn Rate
+Churn Rate =
+[Number of Churned Customers] / [Number of Customers]
+
+Avg Customer Service Calls
+Avg Customer Service Calls =
+SUM('Databel - Data'[Customer Service Calls]) / [Number of Customers]
+
+Avg Extra Data Charges
+Avg Extra Data Charges =
+SUM('Databel - Data'[Extra Data Charges]) / [Number of Customers]
+
+Avg Extra International Charges
+Avg Extra International Charges =
+SUM('Databel - Data'[Extra International Charges]) / [Number of Customers]
+
+2️⃣ Columnas calculadas DAX
+🔹 Churned
+
+Indica si un cliente se dio de baja (1) o no (0).
+
+Churned =
+IF(
+    'Databel - Data'[Churn Label] = "Yes",
+    1,
+    0
+)
+
+Contract Category
+
+Agrupa los tipos de contrato en categorías anuales y mensuales.
+
+Contract Category =
+SWITCH(
+    'Databel - Data'[Contract Type],
+    "One Year", "Yearly",
+    "Two Year", "Yearly",
+    "Monthly"
+)
+
+Demographics
+
+Segmentación demográfica basada en la edad.
+
+Demographics =
+IF(
+    'Databel - Data'[Senior] = "Yes",
+    "Senior",
+    IF(
+        'Databel - Data'[Under 30] = "Yes",
+        "Under 30",
+        "Other"
+    )
+)
+
+Grouped Consumption
+
+Agrupación del consumo promedio mensual de datos móviles.
+
+Grouped Consumption =
+IF(
+    'Databel - Data'[Avg Monthly GB Download] < 5,
+    "Less than 5 GB",
+    IF(
+        'Databel - Data'[Avg Monthly GB Download] < 10,
+        "Between 5 and 10 GB",
+        "10 or more GB"
+    )
+)
