@@ -30,6 +30,7 @@ Modelado de datos
 Visualización y storytelling analítico
 
 🧭 Estructura del análisis
+
 1️⃣ Análisis exploratorio de datos
 
 Exploración del conjunto de datos de Databel y creación de las primeras medidas (número de clientes, clientes dados de baja y tasa de churn) para comprender las principales tendencias del abandono.
